@@ -1,10 +1,11 @@
 function password_is_ok(a){
     try{
         if(a.length == 0){
+            
              console.log("you can't leave this field empty");
-            // throw "you can't leave this field empty"; 
              return false;
-        }else if(a.length > 8){
+
+        }else if(a.length >= 8){
     
             for(var i=0;i< a.length; i++){
             
@@ -12,7 +13,6 @@ function password_is_ok(a){
                 &&  a[i] !== a[i].toLowerCase();
         
                 if(Upper){
-                    //console.log("Upper");
     
                     for(var m=0;m <a.length; m++){
         
@@ -20,32 +20,26 @@ function password_is_ok(a){
                  &&  a[m] === a[m].toLowerCase();
         
                         if(Lower){
-                          // console.log("Lower");
-    
-                        //    console.log(/[0123456789]/.test(a));
+                        
                         if(/[0123456789]/.test(a)){
                             return true;
                         }else{
-                            // throw "your password should have at least 1 number";
+                            
                             console.log("your password should have at least 1 number");
                             return false;
                           }
-                        }
-                        
+                        }   
                     }
                 }
             }
             return false;
         }else{
-            // throw "your password should be more than 8 characters";
-            console.log("your password should be more than 8 characters");
+            
+            console.log("your password should be 8 characters or more");
             return false;
         }
     }
-        catch(err){
-            throw "something went wrong";
-        // console.log("something went wrong "+err);
+        catch(err){           
+         console.log("something went wrong "+err);
             }
     }
-
- //   password_is_ok()

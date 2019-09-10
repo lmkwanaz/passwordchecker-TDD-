@@ -1,62 +1,15 @@
+
 function password_is_valid(a){
-try{
-    if(a.length == 0){
-        // console.log("you can't leave this field empty");
-        throw "you can't leave this field empty"; 
-        // return false;
-    }else if(a.length > 8){
 
-        for(var i=0;i< a.length; i++){
-        
-            let Upper = a[i] === a[i].toUpperCase() 
-            &&  a[i] !== a[i].toLowerCase();
-    
-            if(Upper){
-                //console.log("Upper");
+    let StrongPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
 
-                for(var m=0;m <a.length; m++){
-    
-                    let Lower = a[m] !== a[m].toUpperCase() 
-             &&  a[m] === a[m].toLowerCase();
-    
-                    if(Lower){
-                      // console.log("Lower");
-
-                    //    console.log(/[0123456789]/.test(a));
-                    if(/[0123456789]/.test(a)){
-                        return true;
-                    }else{
-                        throw "your password should have at least 1 number";
-                        // console.log("your password should have at least 1 number");
-                        // return false;
-                      }
-                    }
-                }
-            }
+   let CheckValidPassword = StrongPassword.test(a);
+    try{
+        if(CheckValidPassword == false)
+            throw new Error (" your password should be a Strong password with one LowerCase,UpperCase and Number, `9` characters above");        
         }
-    }else{
-        throw "your password should be more than 8 characters";
-        // console.log("your password should be more than 8 characters");
-        // return false;
-    }
-}
     catch(err){
-        throw "something went wrong";
-    // console.log("something went wrong "+err);
-        }
+        console.log("you have an "+err);
+    }
+    return CheckValidPassword;
 }
-
-
-// function password_is_valid(a){
-//     try{
-//         if(a.length == 0){
-//             // console.log("you can't leave this field empty");
-//             throw "you can't leave this field empty"; 
-//             // return false;
-//         }
-//     }catch (err){
-//         throw "something went wrong2";
-//     }
-// }
-
-// password_is_valid("Lwandie");
