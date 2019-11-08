@@ -1,5 +1,9 @@
 function password_is_ok(a){
     try{
+        var specialcharacters = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+        var check_them = specialcharacters.test(a)
+        var check_Number = /[0123456789]/.test(a);
+       
         if(a.length == 0){
             
              console.log("you can't leave this field empty");
@@ -14,32 +18,46 @@ function password_is_ok(a){
         
                 if(Upper){
     
-                    for(var m=0;m <a.length; m++){
-        
-                        let Lower = a[m] !== a[m].toUpperCase() 
-                 &&  a[m] === a[m].toLowerCase();
-        
-                        if(Lower){
-                        
-                        if(/[0123456789]/.test(a)){
-                            return true;
-                        }else{
-                            
-                            console.log("your password should have at least 1 number");
-                            return false;
-                          }
-                        }   
-                    }
+                    return true;
+                    
                 }
             }
             return false;
-        }else{
+        }else if(a.length >= 8){
+            for(var i=0;i< a.length; i++){
             
-            console.log("your password should be 8 characters or more");
+                let Lower = a[i] !== a[i].toUpperCase() 
+                &&  a[i] === a[i].toLowerCase();
+        
+                if(Lower){
+    
+                    return true;
+
+                }
+            }
             return false;
+        }else if(a.length >= 8){
+    
+            if(check_Number){
+                return true;
+            }
+            return false;
+        }else if(a.length >= 8){
+    
+            if(check_them){
+                return true;
+            }
+            
+            return false;
+        }else{
+
+                console.log("your password should be 8 characters or more and must have at least  special character/Number/Lower,Upper case");
+                return false;
         }
     }
         catch(err){           
          console.log("something went wrong "+err);
             }
     }
+
+    password_is_ok("Lwandile1")
