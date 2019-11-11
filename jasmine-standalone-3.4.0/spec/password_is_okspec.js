@@ -19,13 +19,13 @@ describe("password must meets at least three of the criteria listed above ", fun
     });
     it("password should have at least one number", function(){
         
-        expect(password_is_ok("lwandileNEO")).toBe(false);
+        expect(password_is_ok("lwandileNEO")).toBe(true);
         
         expect(password_is_ok("lwandileneoRiCh1")).toBe(true);
     });
     it("password should have at least one lowercase", function(){
         
-        expect(password_is_ok("LWANDILENEO1")).toBe(false);
+        expect(password_is_ok("LWANDILENEO1")).toBe(true);
         
         expect(password_is_ok("LWANDILERiCh1")).toBe(true);
     });
@@ -33,6 +33,6 @@ describe("password must meets at least three of the criteria listed above ", fun
         
         expect(password_is_ok("lwandileN1")).toBe(true);
         
-        expect(password_is_ok("lwandileneoRiCh")).toBe(false);
+        expect(password_is_ok("lwandileneoRiCh")).toBe(true);
     });
 });
